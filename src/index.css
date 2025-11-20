@@ -1,0 +1,13 @@
+/* Polices Google Fonts - EN PREMIER ! */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Crimson+Pro:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Tailwind APRÈS les imports de polices */
+@import "tailwindcss";
+
+/* Configuration des polices */
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-crimson: 'Crimson Pro', serif;
+  --font-raleway: 'Raleway', sans-serif;
+  --font-space: 'Space Grotesk', sans-serif;
+}
