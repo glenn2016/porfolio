@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Download } from 'lucide-react'; 
+import profileImage from '../../assets/images/1.jpg';
 
 // Floating Dot Component with mouse escape effect
 const FloatingDot = ({ initialX, initialY, size, color, delay }) => {
@@ -165,7 +166,7 @@ const Hero = () => {
             {/* Image container with blob shape */}
             <div className="relative z-10 w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] rounded-[40%_60%_70%_30%/40%_50%_60%_50%] overflow-hidden bg-gradient-to-br from-blue-500 to-blue-700 shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop" 
+                src={profileImage} 
                 alt="Glenn Leonard MOUNGOLO"
                 className="w-full h-full object-cover"
               />
