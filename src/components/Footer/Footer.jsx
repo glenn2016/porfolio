@@ -50,10 +50,10 @@ const Footer = () => {
 
           {/* Social Icons - Centré */}
           <div className="flex justify-center md:justify-start items-center gap-3 sm:gap-4">
-            <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 hover:bg-blue-500/40 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="LinkedIn">
+            <a target="_blank" href="https://sn.linkedin.com/in/glenn-leonard-moungolo-595639250" className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 hover:bg-blue-500/40 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="LinkedIn">
               <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </a>
-            <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700/50 hover:bg-gray-600/70 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="GitHub">
+            <a target='_blank' href="https://github.com/glenn2016" className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700/50 hover:bg-gray-600/70 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="GitHub">
               <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </a>
             <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-400/20 hover:bg-blue-400/40 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="Twitter">
