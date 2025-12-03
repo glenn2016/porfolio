@@ -179,6 +179,20 @@ const About = () => {
 
  return (
     <section id="apropos" className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20 overflow-hidden">
+      
+      {/* 🔥 Vague en haut de la section */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+        <svg 
+          className="relative block w-full h-[60px] sm:h-[80px] md:h-[100px]" 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,0 C300,100 900,20 1200,80 L1200,0 L0,0 Z" 
+            className="fill-gray-900"
+          ></path>
+        </svg>
+      </div>
       {/* 🔥 Cercles flottants animés */}
       {dots.map((dot, index) => (
         <FloatingDot

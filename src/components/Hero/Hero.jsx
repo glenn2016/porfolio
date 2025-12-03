@@ -177,6 +177,19 @@ const Hero = () => {
           </div>
         </div>
       </div>
+            {/* 🔥 Vague de transition vers About */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <svg 
+          className="relative block w-full h-[60px] sm:h-[80px] md:h-[100px]" 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,120 C300,20 900,100 1200,40 L1200,120 L0,120 Z" 
+            className="fill-gray-900"
+          ></path>
+        </svg>
+      </div>
     </section>
   );
 };
