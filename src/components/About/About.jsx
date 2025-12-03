@@ -82,9 +82,20 @@ const FloatingDot = ({ initialX, initialY, size, color, delay }) => {
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('langage');
+  const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
   
   // 🔥 État pour animer la div bleue
   const [blobOffset, setBlobOffset] = useState({ x: 0, y: 0 });
+
+  // 🔥 Gérer le redimensionnement de la fenêtre
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // 🔥 Animation de la div bleue
   useEffect(() => {
@@ -99,14 +110,14 @@ const About = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // 🔥 Cercles flottants pour About
+  // 🔥 Cercles flottants pour About - maintenant basés sur l'état windowSize
   const dots = [
     { x: 150, y: 200, size: 14, color: '#FDE047', delay: 0 },
-    { x: window.innerWidth - 250, y: 150, size: 18, color: '#FACC15', delay: 0.5 },
-    { x: 300, y: window.innerHeight - 300, size: 12, color: '#FDE047', delay: 1 },
-    { x: window.innerWidth - 200, y: window.innerHeight - 250, size: 16, color: '#86EFAC', delay: 1.5 },
-    { x: window.innerWidth / 2, y: 200, size: 10, color: '#FDE047', delay: 2 },
-    { x: 200, y: window.innerHeight - 200, size: 14, color: '#FACC15', delay: 2.5 },
+    { x: windowSize.width - 250, y: 150, size: 18, color: '#FACC15', delay: 0.5 },
+    { x: 300, y: windowSize.height - 300, size: 12, color: '#FDE047', delay: 1 },
+    { x: windowSize.width - 200, y: windowSize.height - 250, size: 16, color: '#86EFAC', delay: 1.5 },
+    { x: windowSize.width / 2, y: 200, size: 10, color: '#FDE047', delay: 2 },
+    { x: 200, y: windowSize.height - 200, size: 14, color: '#FACC15', delay: 2.5 },
   ];
 
 
@@ -183,16 +194,16 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* À propos Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 pointer-events-none">
           {/* Right - Div bleue qui bouge */}
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center pointer-events-none">
             <div 
-              className="absolute inset-0 flex justify-center items-center transition-all duration-[2000ms] ease-in-out"
+              className="absolute inset-0 flex justify-center items-center transition-all duration-[2000ms] ease-in-out pointer-events-none"
               style={{
                 transform: `translate(${blobOffset.x}px, ${blobOffset.y}px)`
               }}
             >
-              <div className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] bg-gradient-to-br from-blue-600/30 to-blue-800/30 rounded-[40%_60%_60%_40%/60%_30%_70%_40%] blur-sm"></div>
+              <div className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] bg-gradient-to-br from-blue-600/30 to-blue-800/30 rounded-[40%_60%_60%_40%/60%_30%_70%_40%] blur-sm pointer-events-noned"></div>
             </div>
           </div>
         </div>

@@ -34,7 +34,10 @@ const Navbar = () => {
               <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-yellow-400 rounded-full"></span>
             </a>
             <a href="#apropos" className="text-white hover:text-yellow-400 transition-colors text-sm xl:text-base">
-              À propos
+              Mes compétences
+            </a>
+            <a href="#apropos" className="text-white hover:text-yellow-400 transition-colors text-sm xl:text-base">
+              Mes expériences & Formations
             </a>
             <a href="#projets" className="text-white hover:text-yellow-400 transition-colors text-sm xl:text-base">
               Mes projets
