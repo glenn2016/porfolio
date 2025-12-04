@@ -3,6 +3,7 @@ import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 import profileImage from "../../assets/images/2.jpg";
 import profileImageTWo from "../../assets/images/3.png";
+import profileImageThree from "../../assets/images/4.png";
 
 const Projects = () => {
   const projects = [
@@ -23,21 +24,20 @@ const Projects = () => {
       description:
         "Dashboard administrateur d'une marketplace e-commerce permettant la gestion des catégories, le suivi des utilisateurs, le contrôle des produits et commandes, ainsi que la supervision globale de l’activité.",
       image: profileImageTWo,
-      technologies: ["React js", "Laravel" ],
+      technologies: ["React js", "Laravel"],
       github: "#",
       demo: "#",
       color: "",
     },
     {
       id: 3,
-      title: "Cbadis",
+      title: "MyFeedback360",
       description:
-        "Plateforme e-commerce moderne avec panier d'achat, système de paiement intégré et tableau de bord administrateur complet pour la gestion des produits.",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+        "Interface web intuitive pour MyFeedback360. Création et gestion d’évaluations 360°, navigation fluide entre les tableaux de bord et suivi en temps réel des résultats.",
+      image: profileImageThree,
       technologies: ["React", "Laravel", "MySQL"],
       github: "#",
-      demo: "#",
+      demo: "https://gestion-entreprise-front-git-master-sibobaldes-projects.vercel.app/",
       color: "from-blue-500 to-cyan-600",
     },
     {
