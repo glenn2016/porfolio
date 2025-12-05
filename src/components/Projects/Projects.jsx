@@ -1,17 +1,21 @@
 //components/Projects/Projects.jsx
-import React from "react";
-import { ExternalLink, Github } from "lucide-react";
+import React, { useState } from "react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import profileImage from "../../assets/images/2.jpg";
 import profileImageTWo from "../../assets/images/3.png";
 import profileImageThree from "../../assets/images/4.png";
+import profileImageFor from "../../assets/images/6.jpg";
 
 const Projects = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 4;
+
   const projects = [
     {
       id: 1,
       title: "Byfaet Seller",
       description:
-        "Cette plateforme permet d’ajouter et de gérer facilement des produits tout en assurant un suivi complet des commandes. Elle offre des outils pour organiser le catalogue, traiter les achats et optimiser la gestion des ventes.",
+        "Cette plateforme permet d'ajouter et de gérer facilement des produits tout en assurant un suivi complet des commandes. Elle offre des outils pour organiser le catalogue, traiter les achats et optimiser la gestion des ventes.",
       image: profileImage,
       technologies: ["Laravel", "Vue js"],
       github: "#",
@@ -22,7 +26,7 @@ const Projects = () => {
       id: 2,
       title: "Faet Admin",
       description:
-        "Dashboard administrateur d'une marketplace e-commerce permettant la gestion des catégories, le suivi des utilisateurs, le contrôle des produits et commandes, ainsi que la supervision globale de l’activité.",
+        "Dashboard administrateur d'une marketplace e-commerce permettant la gestion des catégories, le suivi des utilisateurs, le contrôle des produits et commandes, ainsi que la supervision globale de l'activité.",
       image: profileImageTWo,
       technologies: ["React js", "Laravel"],
       github: "#",
@@ -33,7 +37,7 @@ const Projects = () => {
       id: 3,
       title: "MyFeedback360",
       description:
-        "Interface web intuitive pour MyFeedback360. Création et gestion d’évaluations 360°, navigation fluide entre les tableaux de bord et suivi en temps réel des résultats.",
+        "Interface web intuitive pour MyFeedback360. Création et gestion d'évaluations 360°, navigation fluide entre les tableaux de bord et suivi en temps réel des résultats.",
       image: profileImageThree,
       technologies: ["React", "Laravel", "MySQL"],
       github: "#",
@@ -42,9 +46,9 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "CHMI",
+      title: "Api Tyko",
       description:
-        "Système de gestion hospitalier complet permettant la gestion des patients, des rendez-vous, des dossiers médicaux et de la facturation.",
+        "Plateforme de billetterie en ligne permettant de créer des événements, gérer les places et vendre des billets avec une interface moderne et intuitive.",
       image:
         "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
       technologies: ["Vue.js", "PHP", "PostgreSQL"],
@@ -52,7 +56,39 @@ const Projects = () => {
       demo: "#",
       color: "from-red-500 to-orange-600",
     },
+    {
+      id: 5,
+      title: "Send mail",
+      description:
+        "Une API REST simple et efficace pour envoyer des emails depuis un formulaire de contact de portfolio. Construite avec Node.js, Express et Resend.",
+      image: profileImageFor,
+      technologies: ["Node.js", "Express.js", "Resend"],
+      github: "https://github.com/glenn2016/send-mail?tab=readme-ov-file",
+      demo: "https://send-mail-production-769a.up.railway.app/",
+      color: "from-red-500 to-orange-600",
+    },
   ];
+
+  // Calculs pagination
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const endIndex = startIndex + projectsPerPage;
+  const currentProjects = projects.slice(startIndex, endIndex);
+
+  // Fonctions navigation
+  const goToPage = (page) => {
+    setCurrentPage(page);
+    // Scroll vers le haut de la section
+    document.getElementById("projets")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const goToPrevious = () => {
+    if (currentPage > 1) goToPage(currentPage - 1);
+  };
+
+  const goToNext = () => {
+    if (currentPage < totalPages) goToPage(currentPage + 1);
+  };
 
   return (
     <section
@@ -78,7 +114,7 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project) => (
+          {currentProjects.map((project) => (
             <div
               key={project.id}
               className="group relative bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-gray-600 transition-all duration-300 hover:scale-[1.02]"
@@ -137,7 +173,6 @@ const Projects = () => {
                     <ExternalLink className="w-4 h-4" />
                     Demo
                   </a>
-
                   <a
                     target="_blank"
                     href={project.github}
@@ -162,6 +197,55 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-12">
+            {/* Bouton Précédent */}
+            <button
+              onClick={goToPrevious}
+              disabled={currentPage === 1}
+              className="p-2 rounded-lg bg-gray-800/50 border border-gray-700/50 text-white/70 hover:bg-gray-700/50 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Numéros de page */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => goToPage(page)}
+                className={`w-10 h-10 rounded-lg font-medium transition-all ${
+                  currentPage === page
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-800/50 border border-gray-700/50 text-white/70 hover:bg-gray-700/50 hover:text-white"
+                }`}
+                style={{ fontFamily: "Raleway, sans-serif" }}
+              >
+                {page}
+              </button>
+            ))}
+
+            {/* Bouton Suivant */}
+            <button
+              onClick={goToNext}
+              disabled={currentPage === totalPages}
+              className="p-2 rounded-lg bg-gray-800/50 border border-gray-700/50 text-white/70 hover:bg-gray-700/50 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        )}
+
+        {/* Indicateur de page */}
+        {totalPages > 1 && (
+          <p
+            className="text-center text-white/50 text-sm mt-4"
+            style={{ fontFamily: "Raleway, sans-serif" }}
+          >
+            Page {currentPage} sur {totalPages} • {projects.length} projets
+          </p>
+        )}
 
         {/* Decorative floating dots */}
         <div className="absolute top-20 left-10 w-3 h-3 bg-yellow-400 rounded-full opacity-60 animate-pulse"></div>
