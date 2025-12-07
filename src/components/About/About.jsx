@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-// 🔥 Composant FloatingDot réutilisé
+// Composant FloatingDot réutilisé
 const FloatingDot = ({ initialX, initialY, size, color, delay }) => {
   const [position, setPosition] = useState({ x: initialX, y: initialY });
   const [velocity, setVelocity] = useState({ 
@@ -84,10 +84,10 @@ const About = () => {
   const [activeTab, setActiveTab] = useState('langage');
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
   
-  // 🔥 État pour animer la div bleue
+  // État pour animer la div bleue
   const [blobOffset, setBlobOffset] = useState({ x: 0, y: 0 });
 
-  // 🔥 Gérer le redimensionnement de la fenêtre
+  // Gérer le redimensionnement de la fenêtre
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
@@ -97,7 +97,7 @@ const About = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // 🔥 Animation de la div bleue
+  // Animation de la div bleue
   useEffect(() => {
     const animateBlob = () => {
       setBlobOffset({
@@ -110,7 +110,7 @@ const About = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // 🔥 Cercles flottants pour About - maintenant basés sur l'état windowSize
+  // Cercles flottants pour About - maintenant basés sur l'état windowSize
   const dots = [
     { x: 150, y: 200, size: 14, color: '#FDE047', delay: 0 },
     { x: windowSize.width - 250, y: 150, size: 18, color: '#FACC15', delay: 0.5 },
@@ -204,7 +204,7 @@ const About = () => {
  return (
     <section id="apropos" className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20 overflow-hidden">
       
-      {/* 🔥 Vague en haut de la section */}
+      {/* Vague en haut de la section */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
         <svg 
           className="relative block w-full h-[60px] sm:h-[80px] md:h-[100px]" 
@@ -217,7 +217,7 @@ const About = () => {
           ></path>
         </svg>
       </div>
-      {/* 🔥 Cercles flottants animés */}
+      {/* Cercles flottants animés */}
       {dots.map((dot, index) => (
         <FloatingDot
           key={index}
