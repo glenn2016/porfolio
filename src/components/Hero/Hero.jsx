@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download } from 'lucide-react'; 
 import profileImage from '../../assets/images/1.jpg';
+import cvFile from '../../assets/doc/cv.pdf';
 
 // Floating Dot Component with mouse escape effect
 const FloatingDot = ({ initialX, initialY, size, color, delay }) => {
@@ -101,7 +102,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden">
+    <section id="accueil" className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden">
       {/* Floating animated dots */}
       {dots.map((dot, index) => (
         <FloatingDot
@@ -144,10 +145,15 @@ const Hero = () => {
             </div>
 
             <div>
-              <button className="bg-blue-500/80 hover:bg-blue-600/90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center gap-3" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600, letterSpacing: '0.02em' }}>
+              <a 
+                href={cvFile}
+                download="Glenn_Leonard_MOUNGOLO_CV.pdf"
+                className="bg-blue-500/80 hover:bg-blue-600/90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 flex items-center gap-3 inline-flex" 
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600, letterSpacing: '0.02em' }}
+              >
                 <Download className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
                 Télécharger CV
-              </button>
+              </a>
             </div>
           </div>
 

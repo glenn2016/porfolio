@@ -2,7 +2,7 @@ import React from 'react';
 
 const Experience = () => {
   return (
-    <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20">
+    <section id="experience"  className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         <h2 className="text-white text-3xl sm:text-4xl font-bold mb-12 text-center" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>

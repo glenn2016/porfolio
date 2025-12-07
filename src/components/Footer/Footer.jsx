@@ -2,6 +2,27 @@ import React from 'react';
 import { Mail, Linkedin, Github, Twitter } from 'lucide-react';
 
 const Footer = () => {
+
+  // Liens de navigation
+  const navLinks = [
+    { id: 'accueil', label: 'Accueil', href: '#accueil' },
+    { id: 'apropos', label: 'Mes compétences', href: '#apropos' },
+    { id: 'experience', label: 'Expériences', href: '#experience' },
+    { id: 'projets', label: 'Mes projets', href: '#projets' },
+    { id: 'contact', label: 'Contact', href: '#contact' },
+  ];
+
+  // Scroll smooth vers une section
+  const scrollToSection = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -15,10 +36,15 @@ const Footer = () => {
             Vous avez un projet en tête ? N'hésitez pas à me contacter !
           </p>
           
-          <button className="bg-blue-500/80 hover:bg-blue-600/90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 inline-flex items-center gap-2 sm:gap-3" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}>
+          <a 
+            href="#contact"
+            onClick={(e) => scrollToSection(e, '#contact')}
+            className="bg-blue-500/80 hover:bg-blue-600/90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 inline-flex items-center gap-2 sm:gap-3" 
+            style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}
+          >
             <Mail className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
             Contact
-          </button>
+          </a>
         </div>
 
         {/* Divider */}
@@ -28,35 +54,56 @@ const Footer = () => {
         <div className="flex flex-col gap-6 sm:gap-8">
           
           {/* Logo/Name - Centré sur mobile */}
-          <div className="text-white text-xl sm:text-2xl font-semibold text-center md:text-left" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <a 
+            href="#accueil"
+            onClick={(e) => scrollToSection(e, '#accueil')}
+            className="text-white text-xl sm:text-2xl font-semibold text-center md:text-left hover:text-yellow-400 transition-colors cursor-pointer" 
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
             Perfolio
-          </div>
+          </a>
 
           {/* Navigation Links - Responsive Grid */}
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 sm:gap-6 text-sm sm:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            <a href="#accueil" className="text-white/70 hover:text-yellow-400 transition-colors">
-              Accueil
-            </a>
-            <a href="#apropos" className="text-white/70 hover:text-yellow-400 transition-colors">
-              À propos
-            </a>
-            <a href="#projets" className="text-white/70 hover:text-yellow-400 transition-colors">
-              Mes projets
-            </a>
-            <a href="#contact" className="text-white/70 hover:text-yellow-400 transition-colors">
-              Contact
-            </a>
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="text-white/70 hover:text-yellow-400 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
           {/* Social Icons - Centré */}
           <div className="flex justify-center md:justify-start items-center gap-3 sm:gap-4">
-            <a target="_blank" href="https://sn.linkedin.com/in/glenn-leonard-moungolo-595639250" className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 hover:bg-blue-500/40 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="LinkedIn">
+            <a 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="https://sn.linkedin.com/in/glenn-leonard-moungolo-595639250" 
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 hover:bg-blue-500/40 rounded-full flex items-center justify-center transition-all hover:scale-110" 
+              aria-label="LinkedIn"
+            >
               <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </a>
-            <a target='_blank' href="https://github.com/glenn2016" className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700/50 hover:bg-gray-600/70 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="GitHub">
+            <a 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="https://github.com/glenn2016" 
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700/50 hover:bg-gray-600/70 rounded-full flex items-center justify-center transition-all hover:scale-110" 
+              aria-label="GitHub"
+            >
               <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </a>
-            <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-400/20 hover:bg-blue-400/40 rounded-full flex items-center justify-center transition-all hover:scale-110" aria-label="Twitter">
+            <a 
+              target="_blank"
+              rel="noopener noreferrer"
+              href="#" 
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-400/20 hover:bg-blue-400/40 rounded-full flex items-center justify-center transition-all hover:scale-110" 
+              aria-label="Twitter"
+            >
               <Twitter className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </a>
           </div>
@@ -65,7 +112,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center mt-6 sm:mt-8">
           <p className="text-white/50 text-xs sm:text-sm px-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            © 2024 Glenn Leonard MOUNGOLO. Tous droits réservés.
+            © 2025 Glenn Leonard MOUNGOLO. Tous droits réservés.
           </p>
         </div>
 
