@@ -1,73 +1,12 @@
 //components/Projects/Projects.jsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
-import profileImage from "../../assets/images/2.jpg";
-import profileImageTWo from "../../assets/images/3.png";
-import profileImageThree from "../../assets/images/4.png";
-import profileImageFor from "../../assets/images/6.jpg";
+import { projects } from "../../data/projects";
 
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 4;
-
-  const projects = [
-    {
-      id: 1,
-      title: "Byfaet Seller",
-      description:
-        "Cette plateforme permet d'ajouter et de gérer facilement des produits tout en assurant un suivi complet des commandes. Elle offre des outils pour organiser le catalogue, traiter les achats et optimiser la gestion des ventes.",
-      image: profileImage,
-      technologies: ["Laravel", "Vue js"],
-      github: "#",
-      demo: "https://sell.byfaet.fr/",
-      color: "",
-    },
-    {
-      id: 2,
-      title: "Faet Admin",
-      description:
-        "Dashboard administrateur d'une marketplace e-commerce permettant la gestion des catégories, le suivi des utilisateurs, le contrôle des produits et commandes, ainsi que la supervision globale de l'activité.",
-      image: profileImageTWo,
-      technologies: ["React js", "Laravel"],
-      github: "#",
-      demo: "#",
-      color: "",
-    },
-    {
-      id: 3,
-      title: "MyFeedback360",
-      description:
-        "Interface web intuitive pour MyFeedback360. Création et gestion d'évaluations 360°, navigation fluide entre les tableaux de bord et suivi en temps réel des résultats.",
-      image: profileImageThree,
-      technologies: ["React", "Laravel", "MySQL"],
-      github: "#",
-      demo: "https://gestion-entreprise-front-git-master-sibobaldes-projects.vercel.app/",
-      color: "from-blue-500 to-cyan-600",
-    },
-    {
-      id: 4,
-      title: "Api Tyko",
-      description:
-        "Plateforme de billetterie en ligne permettant de créer des événements, gérer les places et vendre des billets avec une interface moderne et intuitive.",
-      image:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
-      technologies: ["Vue.js", "PHP", "PostgreSQL"],
-      github: "#",
-      demo: "#",
-      color: "from-red-500 to-orange-600",
-    },
-    {
-      id: 5,
-      title: "Send mail",
-      description:
-        "Une API REST simple et efficace pour envoyer des emails depuis un formulaire de contact de portfolio. Construite avec Node.js, Express et Resend.",
-      image: profileImageFor,
-      technologies: ["Node.js", "Express.js", "Resend"],
-      github: "https://github.com/glenn2016/send-mail?tab=readme-ov-file",
-      demo: "https://send-mail-production-769a.up.railway.app/",
-      color: "from-red-500 to-orange-600",
-    },
-  ];
 
   // Calculs pagination
   const totalPages = Math.ceil(projects.length / projectsPerPage);
@@ -78,7 +17,6 @@ const Projects = () => {
   // Fonctions navigation
   const goToPage = (page) => {
     setCurrentPage(page);
-    // Scroll vers le haut de la section
     document.getElementById("projets")?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -122,7 +60,7 @@ const Projects = () => {
               {/* Image */}
               <div className="relative h-48 sm:h-56 overflow-hidden">
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity`}
+                  className={`absolute inset-0 bg-gradient-to-br ${project.color || ""} opacity-20 group-hover:opacity-30 transition-opacity`}
                 ></div>
                 <img
                   src={project.image}
@@ -146,7 +84,7 @@ const Projects = () => {
                   className="text-white/70 text-sm sm:text-base mb-4 leading-relaxed"
                   style={{ fontFamily: "Raleway, sans-serif" }}
                 >
-                  {project.description}
+                  {project.shortDescription}
                 </p>
 
                 {/* Technologies */}
@@ -164,31 +102,54 @@ const Projects = () => {
 
                 {/* Action Buttons */}
                 <div className="flex items-center gap-3">
-                  <a
-                    target="_blank"
-                    href={project.demo}
-                    className="flex-1 bg-blue-500/80 hover:bg-blue-600/90 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
-                    style={{ fontFamily: "Raleway, sans-serif" }}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Demo
-                  </a>
-                  <a
-                    target="_blank"
-                    href={project.github}
-                    className="flex-1 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 border border-white/20"
-                    style={{ fontFamily: "Raleway, sans-serif" }}
-                  >
-                    <Github className="w-4 h-4" />
-                    Code
-                  </a>
+                  {/* Demo Button */}
+                  {project.demo ? (
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={project.demo}
+                      className="flex-1 bg-blue-500/80 hover:bg-blue-600/90 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                      style={{ fontFamily: "Raleway, sans-serif" }}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Demo
+                    </a>
+                  ) : (
+                    <span className="flex-1 bg-gray-700/50 text-white/50 px-4 py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 cursor-not-allowed">
+                      <ExternalLink className="w-4 h-4" />
+                      Demo
+                    </span>
+                  )}
 
-                  <button
+                  {/* GitHub Button */}
+                  {project.github ? (
+                    
+                    <a  target="_blank"
+                      rel="noopener noreferrer"
+                      href={project.github}
+                      className="flex-1 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 border border-white/20"
+                      style={{ fontFamily: "Raleway, sans-serif" }}
+                    >
+                      <Github className="w-4 h-4" />
+                      Code
+                    </a>
+                  ) : (
+                    <span className="flex-1 bg-gray-700/50 text-white/50 px-4 py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 border border-gray-600/50 cursor-not-allowed">
+                      <Github className="w-4 h-4" />
+                      Privé
+                    </span>
+                  )}
+
+                  {/* Details Button - Opens in new tab */}
+                  <Link
+                    to={`/projet/${project.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-green-500/80 hover:bg-green-600/90 text-white w-10 h-10 rounded-lg transition-all duration-300 hover:scale-105 flex items-center justify-center"
                     aria-label="Plus d'infos"
                   >
                     <span className="text-lg font-bold">+</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -201,7 +162,6 @@ const Projects = () => {
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-12">
-            {/* Bouton Précédent */}
             <button
               onClick={goToPrevious}
               disabled={currentPage === 1}
@@ -210,7 +170,6 @@ const Projects = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            {/* Numéros de page */}
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
@@ -226,7 +185,6 @@ const Projects = () => {
               </button>
             ))}
 
-            {/* Bouton Suivant */}
             <button
               onClick={goToNext}
               disabled={currentPage === totalPages}

@@ -9,10 +9,10 @@ import cvFile from '../../assets/doc/cv.pdf';
 const FloatingDot = ({ initialX, initialY, size, color, delay }) => {
   const [position, setPosition] = useState({ x: initialX, y: initialY });
   
-  // 🔥 VITESSE DE BASE x3
+  // 
   const [velocity, setVelocity] = useState({ 
-    x: Math.random() * 6 - 3,  // ✅ 6 au lieu de 2
-    y: Math.random() * 6 - 3   // ✅ 6 au lieu de 2
+    x: Math.random() * 6 - 3,  // 
+    y: Math.random() * 6 - 3   //
   });
 
   useEffect(() => {
@@ -29,8 +29,8 @@ const FloatingDot = ({ initialX, initialY, size, color, delay }) => {
         const angle = Math.atan2(dotY - mouseY, dotX - mouseX);
         const force = (escapeDistance - distance) / escapeDistance;
         
-        // 🔥 VITESSE DE FUITE x3
-        const escapeSpeed = 15;  // ✅ 15 au lieu de 5
+        //
+        const escapeSpeed = 15;  // 
         
         setVelocity({
           x: Math.cos(angle) * escapeSpeed * force,
@@ -61,10 +61,10 @@ const FloatingDot = ({ initialX, initialY, size, color, delay }) => {
         return { x: newX, y: newY };
       });
       
-      // 🔥 MOINS DE FRICTION + PLUS DE VARIATION x3
+      // 
       setVelocity(prev => ({
-        x: prev.x * 0.98 + (Math.random() * 1.2 - 0.6),  // ✅ 0.98 et 1.2 au lieu de 0.95 et 0.4
-        y: prev.y * 0.98 + (Math.random() * 1.2 - 0.6)   // ✅ 0.98 et 1.2 au lieu de 0.95 et 0.4
+        x: prev.x * 0.98 + (Math.random() * 1.2 - 0.6),  
+        y: prev.y * 0.98 + (Math.random() * 1.2 - 0.6)   
       }));
     };
 
@@ -183,7 +183,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-            {/* 🔥 Vague de transition vers About */}
+            {/*  Vague de transition vers About */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
         <svg 
           className="relative block w-full h-[60px] sm:h-[80px] md:h-[100px]" 
