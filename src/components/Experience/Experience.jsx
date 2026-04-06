@@ -70,6 +70,36 @@ const Experience = () => {
             </h3>
             
             <div className="space-y-6">
+            {/* Item 0 */}
+            <div className="relative pl-6 border-l-2 border-blue-400">
+              <div className="absolute -left-[9px] top-0 w-4 h-4 bg-blue-400 rounded-full"></div>
+
+              <p className="text-white/60 text-sm mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                Novembre 2025 – Aujourd’hui
+              </p>
+
+              <h4 className="text-white text-lg font-semibold mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Independance360 | Développeur Back-End Freelance
+              </h4>
+
+              <p className="text-white/70 text-sm leading-relaxed" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                Conception et développement complet du backend d’une plateforme d’actualité inspirée de grands médias en ligne.
+                Mise en place d’une API REST avec Express.js permettant la gestion des rubriques, la création et l’édition d’articles,
+                ainsi que l’authentification et la gestion des comptes rédacteurs.
+                Intégration d’une base de données PostgreSQL (Neon) pour la persistance des données et optimisation des performances via Redis pour la mise en cache.
+                Implémentation d’un système de monitoring et de logging avec Grafana, Promtail et Loki pour assurer la supervision de l’application.
+                Conteneurisation avec Docker et déploiement sur un VPS cloud chez OVHcloud avec configuration serveur.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-3">
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Express.js</span>
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">PostgreSQL (Neon)</span>
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Redis</span>
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Docker</span>
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Grafana</span>
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Loki</span>
+              </div>
+            </div>
               {/* Item 1 */}
               <div className="relative pl-6 border-l-2 border-blue-400">
                 <div className="absolute -left-[9px] top-0 w-4 h-4 bg-blue-400 rounded-full"></div>

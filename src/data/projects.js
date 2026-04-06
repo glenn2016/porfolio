@@ -3,10 +3,58 @@ import profileImage from "../assets/images/2.jpg";
 import profileImageTwo from "../assets/images/3.png";
 import profileImageThree from "../assets/images/4.png";
 import profileImageFor from "../assets/images/6.jpg";
+import profileImageSeven from "../assets/images/7.png";
 
 export const projects = [
   {
-    id: 1,
+    id: 2,
+    slug: "independance360",
+    title: "Independance360 API",
+    shortDescription:
+      "API backend d’une plateforme d’actualité permettant la gestion des articles, des rubriques et des comptes rédacteurs.",
+
+    fullDescription: `
+      Independance360 est une API backend conçue pour une plateforme d’actualité moderne, inspirée des grands médias en ligne.
+      
+      Elle permet de gérer efficacement la publication de contenus, l’organisation éditoriale et les utilisateurs (rédacteurs).
+      
+      L’architecture a été pensée pour être performante, scalable et facilement déployable en environnement cloud.
+      
+      Fonctionnalités principales :
+      • Gestion des rubriques (catégories d’articles)
+      • Création, modification et suppression d’articles
+      • Authentification et gestion des comptes rédacteurs
+      • Système de cache avec Redis pour améliorer les performances
+      • Monitoring et centralisation des logs (Grafana, Loki, Promtail)
+      • API REST sécurisée et structurée
+      
+      L’application est conteneurisée avec Docker et déployée sur un VPS cloud, avec configuration serveur personnalisée.
+    `,
+
+    image: profileImageSeven,
+    gallery: [
+      profileImageSeven,
+      // Tu peux ajouter screenshots Grafana, API, etc.
+    ],
+
+    technologies: [
+      "Express.js",
+      "PostgreSQL (Neon)",
+      "Redis",
+      "Docker",
+      "Grafana",
+      "Loki",
+    ],
+
+    github: "https://github.com/glenn2016/indepance360-api.git",
+    demo: "http://indepance360.duckdns.org/api/",
+    status: "development",
+    year: "2025",
+    client: "Independance360",
+    role: "Développeur Back-End",
+  },
+  {
+    id: 2,
     slug: "byfaet-seller",
     title: "Byfaet Seller",
     shortDescription:
@@ -37,7 +85,7 @@ export const projects = [
     role: "Développeur Full-Stack",
   },
   {
-    id: 2,
+    id: 3,
     slug: "faet-admin",
     title: "Faet Admin",
     shortDescription:
@@ -85,7 +133,7 @@ export const projects = [
     role: "Développeur Full-Stack",
   },
   {
-    id: 3,
+    id: 4,
     slug: "myfeedback360",
     title: "MyFeedback360",
     shortDescription:
@@ -115,7 +163,7 @@ export const projects = [
     role: "Développeur Back-end",
   },
   {
-    id: 4,
+    id: 5,
     slug: "api-tyko",
     title: "Api Tyko",
     shortDescription:
@@ -141,7 +189,7 @@ export const projects = [
     role: "Développeur Full-Stack",
   },
   {
-    id: 5,
+    id: 6,
     slug: "send-mail",
     title: "Send Mail API",
     shortDescription:
