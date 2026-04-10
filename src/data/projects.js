@@ -13,7 +13,7 @@ export const projects = [
     shortDescription:
       "API backend d’une plateforme d’actualité permettant la gestion des articles, des rubriques et des comptes rédacteurs.",
 
-    fullDescription: `
+    fullDescription: ` 
       Independance360 est une API backend conçue pour une plateforme d’actualité moderne, inspirée des grands médias en ligne.
       
       Elle permet de gérer efficacement la publication de contenus, l’organisation éditoriale et les utilisateurs (rédacteurs).
